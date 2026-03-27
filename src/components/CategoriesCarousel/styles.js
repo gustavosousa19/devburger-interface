@@ -34,6 +34,7 @@ export const ContainerItems = styled.div`
   background-position: center;
   background-size: cover;
   border-radius: 20px;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
