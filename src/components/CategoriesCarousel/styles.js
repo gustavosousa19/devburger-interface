@@ -5,6 +5,14 @@ export const Container = styled.div`
     padding-right: 40px;
   }
 
+  .react-multiple-carousel__arrow--left {
+    top: 10px;
+    left: 15px;
+  }
+  .react-multiple-carousel__arrow--right {
+    top: 10px;
+  }
+
   padding-left: 40px;
 `;
 
