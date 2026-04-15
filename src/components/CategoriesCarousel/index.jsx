@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 import { useNavigate } from 'react-router-dom';
+import 'react-multi-carousel/lib/styles.css';
 
 import { api } from '../../services/api';
 import { CategoryButton, Container, ContainerItems, Title } from './styles';

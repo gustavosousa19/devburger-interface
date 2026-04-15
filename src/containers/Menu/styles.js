@@ -87,9 +87,9 @@ export const BackButton = styled.button`
   line-height: 20px;
   padding: 8px 12px;
   z-index: 10;
+  transition: color 200ms ease;
 
   &:hover {
     color: #9758a6;
-    opacity: 0.9;
   }
 `;
