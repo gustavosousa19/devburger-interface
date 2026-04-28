@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Root = styled.div`
+export const Root = styled.table`
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;

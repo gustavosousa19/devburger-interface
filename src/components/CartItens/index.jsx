@@ -56,7 +56,7 @@ export function CartItens() {
             </Table.Tr>
           ))
         ) : (
-          <EmptyCart>Carrinho Vazio</EmptyCart>
+          <EmptyCart></EmptyCart>
         )}
       </Table.Body>
     </Table.Root>
