@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -9,20 +9,13 @@ import { Button } from '../Button';
 import { Container } from './styles';
 
 export function CartResume() {
-  const [finalPrice, setFinalPrice] = useState(0);
   const [deliveryTax] = useState(500);
-
   const navigate = useNavigate();
+  const { cartProducts } = useCart();
 
-  const { cartProducts, clearCart } = useCart();
-
-  useEffect(() => {
-    const sumAllItems = cartProducts.reduce((acc, current) => {
-      return current.price * current.quantity + acc;
-    }, 0);
-
-    setFinalPrice(sumAllItems);
-  }, [cartProducts]);
+  const finalPrice = cartProducts.reduce((acc, current) => {
+    return current.price * current.quantity + acc;
+  }, 0);
 
   const submitOrder = async () => {
     const products = cartProducts.map((product) => {

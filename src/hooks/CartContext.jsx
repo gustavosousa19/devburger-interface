@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/immutability */
+import PropTypes from 'prop-types';
 import { useContext, createContext, useEffect, useState } from 'react';
 
 const CartContext = createContext({});
@@ -93,6 +94,10 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export const useCart = () => {

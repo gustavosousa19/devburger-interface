@@ -5,7 +5,6 @@ import {
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
 import '../styles.css';
 import { toast } from 'react-toastify';
 
