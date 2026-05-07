@@ -66,7 +66,6 @@ export default function CheckoutForm() {
             Navigate(
               `/complete?payment_intent_client_secret=${paymentIntent.client_secret}`,
             );
-            clearCart();
           }, 3000);
 
           clearCart();
@@ -80,7 +79,9 @@ export default function CheckoutForm() {
         toast.error('Falha no Sistema! Tente novamente');
       }
     } else {
-      toast.error('Falha no Sistema! Tente novamente');
+      Navigate(
+        `/complete?payment_intent_client_secret=${paymentIntent.client_secret}`,
+      );
     }
 
     setIsLoading(false);
