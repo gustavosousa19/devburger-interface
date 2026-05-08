@@ -2,7 +2,7 @@ export * from './Button';
 export * from './CardProduct';
 export * from './CartButton';
 export * from './CategoriesCarousel';
-export * from './Footer';
+export { default as Footer } from './Footer';
 export * from './Header';
 export * from './OffersCarousel';
 export * from './Table';
