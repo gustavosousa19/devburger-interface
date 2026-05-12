@@ -1,7 +1,30 @@
+import { SignOut } from '@phosphor-icons/react';
+
+import Logo from '../../assets/logo.png';
+import { useUser } from '../../hooks/UserContext';
+import { navLinks } from './navLinks';
+import { Container, NavLink, NavLinkContainer, Footer } from './styles';
+
 export function SideNavAdmin() {
-    return (
-        <div>
-            <h2>Menu</h2>
-        </div>
-    );
+  const { logout } = useUser();
+
+  return (
+    <Container>
+      <img src={Logo} alt="Hamburger Logo DevBurger" />
+      <NavLinkContainer>
+        {navLinks.map((link) => (
+          <NavLink key={link.id} to={link.path}>
+            {link.icon}
+            <span>{link.label}</span>
+          </NavLink>
+        ))}
+      </NavLinkContainer>
+      <Footer>
+        <NavLink to="/login" onClick={logout}>
+          <SignOut />
+          <span>Sair</span>
+        </NavLink>
+      </Footer>
+    </Container>
+  );
 }
