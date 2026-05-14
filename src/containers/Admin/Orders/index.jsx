@@ -52,9 +52,9 @@ export function Orders() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {rows.map((row) => (
+          {rows.map((row) => (
             <Row key={row._id} row={row} />
-          ))} */}
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
