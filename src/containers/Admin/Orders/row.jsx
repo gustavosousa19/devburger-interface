@@ -17,10 +17,11 @@ import { formatDate } from '../../../utils/formatDate';
 import { orderStatusOptions } from './orderStatus';
 import { ProductImage, SelectStatus } from './styles';
 
-export function Row(row, setOrders, orders) {
+export function Row({ row, setOrders, orders }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // PROCESSAMENTO DE EVENTOS / CONEXÃO API
   async function newStatusOrder(id, status) {
     try {
       setLoading(true);
