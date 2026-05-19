@@ -66,3 +66,10 @@ export const Select = styled(ReactSelect)``;
 export const SubmitButton = styled(Button)`
   margin-top: 40px;
 `;
+
+export const ErrorMessage = styled.span`
+  color: #cf3057;
+  font-size: 14px;
+  line-height: 80%;
+  font-weight: 600px;
+`;
