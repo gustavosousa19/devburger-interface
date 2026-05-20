@@ -36,39 +36,57 @@ export function EditProduct() {
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const product =
+    location.state && location.state.product ? location.state.product : null;
 
   const {
-    state: { product },
-  } = useLocation();
+    register,
+    handleSubmit,
+    control,
+    setValue, // Adicionado para setar os valores dinamicamente
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   useEffect(() => {
     async function loadCategories() {
       const { data } = await api.get('/categories');
-
       setCategories(data);
     }
 
     loadCategories();
   }, []);
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  // Esse useEffect vai preencher o formulário assim que o produto carregar na tela
+  useEffect(() => {
+    if (product) {
+      setValue('name', product.name);
+      setValue('price', product.price / 100);
+      setValue('category', product.category);
+      setValue('offer', product.offer);
+    }
+  }, [product, setValue]);
+
   const onSubmit = async (data) => {
     const productFormData = new FormData();
 
     productFormData.append('name', data.name);
     productFormData.append('price', data.price * 100);
     productFormData.append('category_id', data.category.id);
-    productFormData.append('file', data.file[0]);
+
+    if (data.file && data.file[0]) {
+      productFormData.append('file', data.file[0]);
+    }
+
     productFormData.append('offer', data.offer);
 
-    await toast.promise(api.put(`/products/${product.id}`, productFormData), {
+    // Ajustado para garantir que não quebre se o product for null no build
+    const productId = product ? product.id : '';
+
+    await toast.promise(api.put(`/products/${productId}`, productFormData), {
       pending: 'Editando Produto',
       success: 'Produto editado com sucesso',
       error: 'Falha ao editar o produto, tente novamente',
@@ -85,21 +103,13 @@ export function EditProduct() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup>
             <Label>Nome</Label>
-            <Input
-              type="text"
-              {...register('name')}
-              defaultValue={product.name}
-            />
+            <Input type="text" {...register('name')} />
             <ErrorMessage>{errors?.name?.message}</ErrorMessage>
           </InputGroup>
 
           <InputGroup>
             <Label>Preço</Label>
-            <Input
-              type="number"
-              {...register('price')}
-              defaultValue={product.price / 100}
-            />
+            <Input type="number" {...register('price')} />
             <ErrorMessage>{errors?.price?.message}</ErrorMessage>
           </InputGroup>
 
@@ -115,10 +125,8 @@ export function EditProduct() {
                   register('file').onChange(value);
                 }}
               />
-
               {fileName || 'Upload do Produto'}
             </LabelUpload>
-
             <ErrorMessage>{errors?.file?.message}</ErrorMessage>
           </InputGroup>
 
@@ -127,7 +135,6 @@ export function EditProduct() {
             <Controller
               name="category"
               control={control}
-              defaultValue={product.category}
               render={({ field }) => (
                 <Select
                   {...field}
@@ -136,21 +143,15 @@ export function EditProduct() {
                   getOptionValue={(category) => category._id}
                   placeholder="Categorias"
                   menuPortalTarget={document.body}
-                  defaultValue={product.category}
                 />
               )}
             />
-
             <ErrorMessage>{errors?.category?.message}</ErrorMessage>
           </InputGroup>
 
           <InputGroup>
             <ContainerCheckbox>
-              <input
-                type="checkbox"
-                defaultChecked={product.offer}
-                {...register('offer')}
-              />
+              <input type="checkbox" {...register('offer')} />
               <Label>Produtos em Oferta ?</Label>
             </ContainerCheckbox>
           </InputGroup>
