@@ -54,3 +54,15 @@ Antes de começar, você vai precisar ter instalado em sua máquina o [Node.js](
 1. **Clone o repositório:**
    ```bash
    git clone [https://github.com/seu-usuario/devburger-interface.git](https://github.com/seu-usuario/devburger-interface.git)
+
+2. **Entre na pasta do projeto:**
+   cd devburger-interface
+
+3. **Instale as dependências:**
+   yarn install
+
+4. **Execute a aplicação em modo de desenvolvimento:**
+   yarn dev
+
+5. **Abra o navegador em http://localhost:5173 para ver o projeto rodando!**
+    
