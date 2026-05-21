@@ -1085,4 +1085,4 @@ export default theme;`}function Sx(e){return typeof e=="number"?`${(e*100).toFix
     button, a {
         cursor: pointer;
     }
-`;_T.createRoot(document.getElementById("root")).render(_.jsx(S.StrictMode,{children:_.jsxs(T4,{children:[_.jsx(xm,{stripe:b4,children:_.jsx(K5,{children:_.jsx(uV,{})})}),_.jsx(cV,{}),_.jsx(Bw,{autoClose:2e3,theme:"colored"})]})}));
+`;_T.createRoot(document.getElementById("root")).render(_.jsx(S.StrictMode,{children:_.jsxs(T4,{children:[_.jsx(xm,{stripe:b4,children:_.jsx(K5,{basename:"/devburger-interface",children:_.jsx(uV,{})})}),_.jsx(cV,{}),_.jsx(Bw,{autoClose:2e3,theme:"colored"})]})}));
