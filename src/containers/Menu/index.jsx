@@ -10,7 +10,6 @@ import {
   CategoryMenu,
   ProductsContainer,
   CategoryButton,
-  BackButton,
 } from './styles';
 
 export function Menu() {
@@ -73,7 +72,6 @@ export function Menu() {
           <span>Esse cardápio está irresistível!</span>
         </h1>
       </Banner>
-      <BackButton onClick={() => navigate('/')}>⭠ Voltar</BackButton>
       <CategoryMenu>
         {categories.map((category) => (
           <CategoryButton
